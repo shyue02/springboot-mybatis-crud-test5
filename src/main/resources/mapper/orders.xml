@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="site.metacoding.firstapp.domain.OrdersDao">
+
+	<select id="findById"
+		resultType="site.metacoding.firstapp.domain.Orders">
+		SELECT * FROM orders WHERE orders_id = #{ordersId}
+	</select>
+
+	<select id="findAll"
+		resultType="site.metacoding.firstapp.domain.Orders">
+		SELECT * FROM orders 
+		WHERE user_id = #{userId}
+	</select>
+
+	<insert id="insert" useGeneratedKeys="true"
+		keyProperty="ordersId">
+		INSERT INTO orders(orders_name, orders_price, orders_qty, product_id, user_id, created_at)
+		VALUES(#{ordersName}, #{ordersPrice}, #{ordersQty},#{productId}, #{userId}, NOW())
+	</insert>
+
+	<update id="update">
+		UPDATE orders SET orders_name = #{orderstName},
+		orders_price = #{ordersPrice},
+		orders_qty = #{ordersQty},
+		product_id = #{productId},
+		user_id = #{userId}
+		WHERE orders_id = #{ordersId}
+	</update>
+
+	<delete id="deleteById">
+		DELETE FROM orders WHERE orders_id = #{ordersId}
+	</delete>
+
+</mapper>
