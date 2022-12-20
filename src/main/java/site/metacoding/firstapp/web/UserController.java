@@ -1,9 +1,13 @@
 package site.metacoding.firstapp.web;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import lombok.RequiredArgsConstructor;
@@ -82,5 +86,21 @@ public class UserController {
 		userDao.insert(joinDto.toEntity());
 		return "redirect:/loginForm";
 	}
+	
+	
+	// 유저 목록 페이지 - 관리자만 접근 가능
+	@GetMapping("userListForm")
+	public String userListForm(Model model) {
+		List<User> getuserList = userDao.findAll();
+		model.addAttribute("userlist", getuserList);
+		
+		User principal = (User) session.getAttribute("principal");
+		if(principal.getRole().equals("admin")){
+			return "/user/userListForm";
+		}
+		return "redirect:/";
+	}
+	
+
 }
 
