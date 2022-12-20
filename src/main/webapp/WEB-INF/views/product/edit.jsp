@@ -26,7 +26,7 @@
 			</tbody>
 		</table>
 		<div align="center">
-			<button id="btnInsert" type="submit" class="btn btn-primary">상품수정완료</button>
+			<button type="submit" class="btn btn-primary">상품수정완료</button>
 		</div>
 	</form>
 </div>
