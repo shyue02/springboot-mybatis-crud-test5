@@ -14,4 +14,5 @@ public interface ProductDao {
     public Product findByProductName(String productName);
     
     public void productQtyUpdate(OrdersDto ordersDto);
+    public void cancelPurchase(OrdersDto ordersDto);
 }

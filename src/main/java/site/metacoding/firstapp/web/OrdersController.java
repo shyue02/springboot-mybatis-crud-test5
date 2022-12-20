@@ -57,4 +57,34 @@ public class OrdersController {
 		ordersDao.insert(ordersDto.toEntity(principal.getUserId()));
 		return "redirect:/orders/ordersList";
 	}
+	
+
+	// 상품 구매 취소하기
+	@PostMapping("/orders/{ordersId}/cancle")
+	public String cancelpurchase(@PathVariable Integer ordersId, OrdersDto ordersDto) {
+		User principal = (User) session.getAttribute("principal");
+		if(principal == null) {
+			return "redirect:/loginForm";
+		}
+		
+		System.out.println("=======================");
+		System.out.println(ordersDto.getOrdersName());
+		System.out.println(ordersDto.getOrdersPrice());
+		System.out.println(ordersDto.getOrdersQty());
+//		System.out.println(ordersDto.getOrdersId());
+		System.out.println(ordersDto.getProductId());
+		System.out.println("=======================");
+		
+		Orders ordersPS = ordersDao.findById(ordersId);	// ordersId 찾아서
+		System.out.println(ordersId);
+		
+		productDao.cancelPurchase(ordersDto);
+		System.out.println("구매취소 성공");
+		
+		ordersDao.deleteById(ordersPS.getOrdersId());	
+		System.out.println("주문아이디 삭제");
+
+		return "redirect:/";
+	}
+	
 }

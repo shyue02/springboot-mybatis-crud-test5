@@ -41,4 +41,9 @@
 		WHERE product_id = #{productId}
 	</update>
 
+	<update id="cancelPurchase">
+		UPDATE product SET product_qty = product_Qty + #{ordersQty}
+		WHERE product_id = #{productId}
+	</update>
+
 </mapper>
