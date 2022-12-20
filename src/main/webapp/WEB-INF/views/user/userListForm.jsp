@@ -12,6 +12,7 @@
 				<th>구매자 이메일</th>
 				<th>회원</th>
 				<th>구매자 회원가입일</th>
+				<th>회원삭제</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -22,6 +23,11 @@
 					<td>${userlist.userEmail}</td>
 					<td>${userlist.role}</td>
 					<td>${userlist.createdAt}</td>
+					<td>
+						<form action="userListForm/${userlist.userId}/delete" method="post">
+							<button type="submit"  class="btn btn-danger">회원 삭제</button>
+						</form>
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
