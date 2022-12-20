@@ -17,6 +17,7 @@ import site.metacoding.firstapp.domain.Product;
 import site.metacoding.firstapp.domain.ProductDao;
 import site.metacoding.firstapp.domain.User;
 import site.metacoding.firstapp.web.dto.request.OrdersDto;
+import site.metacoding.firstapp.web.dto.response.UserOrderListDto;
 
 @RequiredArgsConstructor
 @Controller
@@ -84,6 +85,20 @@ public class OrdersController {
 		ordersDao.deleteById(ordersPS.getOrdersId());	
 		System.out.println("주문아이디 삭제");
 
+		return "redirect:/";
+	}
+	
+	
+	// 구매 목록 - 관리자 접근
+	@GetMapping("userOrderListForm")
+	public String userOrderList(Model model) {
+		List<UserOrderListDto> userOrderList = ordersDao.findAllOrders();
+		model.addAttribute("userOrderList", userOrderList);
+		
+		User principal = (User) session.getAttribute("principal");
+		if(principal.getRole().equals("admin")){
+			return "/orders/userOrderList";
+		}
 		return "redirect:/";
 	}
 	

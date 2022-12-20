@@ -14,6 +14,14 @@
 		SELECT * FROM orders 
 		WHERE user_id = #{userId}
 	</select>
+	
+	<select id="findAllOrders"
+		resultType="site.metacoding.firstapp.web.dto.response.UserOrderListDto">
+		SELECT u.user_name, o.orders_name, o.orders_price, o.orders_qty, o.created_at
+		FROM user u LEFT JOIN orders o
+		ON u.user_id = o.user_id
+		WHERE o.orders_qty > 0
+	</select>
 
 	<insert id="insert" useGeneratedKeys="true"
 		keyProperty="ordersId">
