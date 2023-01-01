@@ -2,6 +2,7 @@ package site.metacoding.firstapp.web;
 
 import java.util.List;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -85,6 +86,15 @@ public class UserController {
 	public String join(JoinDto joinDto) {
 		userDao.insert(joinDto.toEntity());
 		return "redirect:/loginForm";
+	}
+	
+	
+	// 회원 정보 - 구매자
+	@GetMapping("/user/{userId}/profile")
+	public String userProfileForm(@PathVariable Integer userId, Model model) {
+		User userPS = userDao.findById(userId);
+		model.addAttribute("userProfile", userPS);
+		return "user/userProfileForm";
 	}
 	
 	
