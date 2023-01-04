@@ -34,7 +34,7 @@
 						</c:when>
 						<c:when test="${principal.role == 'user' }">	<!-- 구매자 로그인 시 -->
 							<li class="nav-item"><a class="nav-link" href="/orders/ordersList">구매목록</a></li>
-							<li class="nav-item"><a class="nav-link" href="/user/${principal.userId}/profile">회원정보</a></li> 	
+							<li class="nav-item"><a class="nav-link" href="/user/profile">회원정보</a></li> 	
 							<li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li> 									
 						</c:when>
 						<c:otherwise>	<!-- 관리자 로그인 시 -->

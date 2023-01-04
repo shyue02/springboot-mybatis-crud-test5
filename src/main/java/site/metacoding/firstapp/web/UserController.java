@@ -90,9 +90,10 @@ public class UserController {
 	
 	
 	// 회원 정보 - 구매자
-	@GetMapping("/user/{userId}/profile")
-	public String userProfileForm(@PathVariable Integer userId, Model model) {
-		User userPS = userDao.findById(userId);
+	@GetMapping("/user/profile")
+	public String userProfileForm(Integer userId, Model model) {
+		User principal = (User) session.getAttribute("principal");
+		User userPS = userDao.findById(principal.getUserId());
 		model.addAttribute("userProfile", userPS);
 		return "user/userProfileForm";
 	}
