@@ -33,7 +33,7 @@
 	</insert>
 
 	<update id="update">
-		UPDATE user SET user_name = #{userName},
+		UPDATE user SET
 		user_password = #{userPassword},
 		user_email = #{userEmail}
 		WHERE user_id = #{userId}

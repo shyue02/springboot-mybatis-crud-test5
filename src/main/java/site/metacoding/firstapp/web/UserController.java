@@ -2,7 +2,6 @@ package site.metacoding.firstapp.web;
 
 import java.util.List;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -17,6 +16,7 @@ import site.metacoding.firstapp.domain.UserDao;
 import site.metacoding.firstapp.web.dto.request.AdminLoginDto;
 import site.metacoding.firstapp.web.dto.request.JoinDto;
 import site.metacoding.firstapp.web.dto.request.LoginDto;
+import site.metacoding.firstapp.web.dto.request.UserUpdateDto;
 
 @RequiredArgsConstructor
 @Controller
@@ -89,15 +89,29 @@ public class UserController {
 	}
 	
 	
-	// 회원 정보 - 구매자
+	// 회원 정보 페이지
 	@GetMapping("/user/profile")
-	public String userProfileForm(Integer userId, Model model) {
+	public String userProfileForm(Model model) {
 		User principal = (User) session.getAttribute("principal");
 		User userPS = userDao.findById(principal.getUserId());
 		model.addAttribute("userProfile", userPS);
 		return "user/userProfileForm";
 	}
 	
+	// 회원 정보 수정
+	@PostMapping("/user/profile")
+	public String userUpdate(UserUpdateDto userUpdateDto) {
+		// 1. principal에서 userId를 찾아옴
+		User principal = (User) session.getAttribute("principal");
+//		System.out.println(principal.getUserId() +  " userId를 가져옴");
+		
+		// 2, 영속화 된 객체 변경 -> DB 수행
+		userDao.update(userUpdateDto.toEntity(principal.getUserId()));
+//		System.out.println(userUpdateDto.getUserEmail() + " -> 수정 된 userEmail를 가져옴");
+//		System.out.println(userUpdateDto.getUserPassword() + " -> 수정된 userPassword를 가져옴");	
+		return "redirect:/user/profile"; 
+	}
+
 	
 	// 유저 목록 페이지 - 관리자만 접근 가능
 	@GetMapping("userListForm")

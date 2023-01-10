@@ -41,6 +41,7 @@
  							<li class="nav-item"><a class="nav-link" href="/product/add">상품등록</a></li> 
 							<li class="nav-item"><a class="nav-link" href="/userListForm">유저 목록</a></li>
 							<li class="nav-item"><a class="nav-link" href="/userOrderListForm">구매 목록</a></li>
+							<li class="nav-item"><a class="nav-link" href="/user/profile">회원정보</a></li> 	
 							<li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
 						</c:otherwise>
 					</c:choose>	

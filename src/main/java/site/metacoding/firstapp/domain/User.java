@@ -23,5 +23,12 @@ public class User {
 		this.role = role; 	//거르기 위해서 사용!! -> JoinDto > toEntity에서 적어준 값으로 들어감
 		//this.role = "USER"; // 무조건 USER로 값이 들어감
 	}
+	
+	public User(String userPassword, String userEmail, Integer userId) {
+		this.userPassword = userPassword;
+		this.userEmail = userEmail;
+		this.userId = userId;
+	}
+
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import site.metacoding.firstapp.web.dto.request.AdminLoginDto;
 import site.metacoding.firstapp.web.dto.request.LoginDto;
+import site.metacoding.firstapp.web.dto.request.UserUpdateDto;
 
 public interface UserDao {
     public User findById(Integer userId);
