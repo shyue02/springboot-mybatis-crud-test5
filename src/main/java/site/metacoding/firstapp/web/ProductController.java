@@ -39,7 +39,7 @@ public class ProductController {
 	@GetMapping("/product/{productId}")
 	public String productDetail(@PathVariable Integer productId, Model model) {
 //		Product productPS = productDao.findById(productId);
-//		model.addAttribute("product", productPS);
+//		model.addAttribute("detail", productPS);
 		model.addAttribute("detail", productDao.findById(productId));
 		return "product/detail";
 	}

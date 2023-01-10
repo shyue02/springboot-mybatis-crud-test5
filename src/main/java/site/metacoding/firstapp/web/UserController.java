@@ -35,9 +35,9 @@ public class UserController {
 		User userPS = userDao.login(loginDto);
 		if(userPS != null) {
 			session.setAttribute("principal", userPS);
-			System.out.println(loginDto.getUserName());
+//			System.out.println(loginDto.getUserName());
 			if(userPS.getRole().equals("user")) {
-				System.out.println("user 로그인 성공");
+//				System.out.println("user 로그인 성공");
 				return "redirect:/";
 			}
 		}
@@ -57,9 +57,9 @@ public class UserController {
 		User userPS = userDao.adminlogin(adminloginDto);
 		if(userPS != null) {
 			session.setAttribute("principal", userPS);
-			System.out.println(adminloginDto.getUserName());
+//			System.out.println(adminloginDto.getUserName());
 			if(userPS.getRole().equals("admin")) {
-				System.out.println("admin 로그인 성공");
+//				System.out.println("admin 로그인 성공");
 				return "redirect:/";
 			}
 		}

@@ -5,7 +5,7 @@
 <div class="container">
 	<h3>상품 수정 페이지</h3>
 	<form action="/product/${edit.productId}/edit" method="post">
-		<input name="id" type="hidden" value="${edit.productId}">
+		<input name="productId" type="hidden" value="${edit.productId}">
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -16,11 +16,11 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><input id="name" name="productName" type="text"
+					<td><input name="productName" type="text"
 						class="form-control" value="${edit.productName}"></td>
-					<td><input id="price" name="productPrice" type="text"
+					<td><input name="productPrice" type="text"
 						class="form-control" value="${edit.productPrice}"></td>
-					<td><input id="qty" name="productQty" type="text"
+					<td><input name="productQty" type="text"
 						class="form-control" value="${edit.productQty}"></td>
 				</tr>
 			</tbody>
