@@ -21,8 +21,13 @@
 				value="${userProfile.userEmail}">
 		</div>
 		<button name="btnUpdate" type="submit" class="btn btn-primary">회원수정완료</button>
-		<button id="btnDelete" class="btn btn-danger">회원탈퇴</button>
 	</form>
+	<c:if test="${principal.role == 'user' }">
+	<br>
+		<form action="/user/profile/delete" method="post">
+			<button name="btnDelete" type="submit" class="btn btn-danger">회원탈퇴</button>
+		</form>
+	</c:if>
 </div>
 
 

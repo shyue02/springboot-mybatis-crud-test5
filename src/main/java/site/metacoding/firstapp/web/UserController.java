@@ -111,8 +111,17 @@ public class UserController {
 //		System.out.println(userUpdateDto.getUserPassword() + " -> 수정된 userPassword를 가져옴");	
 		return "redirect:/user/profile"; 
 	}
-
 	
+	// 회원 탈퇴 - 구매자 권한
+	@PostMapping("/user/profile/delete")
+	public String unregister(Integer userId) {
+		User principal = (User) session.getAttribute("principal");
+		userDao.deleteById(principal.getUserId());
+		session.invalidate();		// -> 회원 탈퇴 버튼 클릭 시 세션 로그아웃 되도록
+		return "redirect:/";
+	}	
+
+
 	// 유저 목록 페이지 - 관리자만 접근 가능
 	@GetMapping("userListForm")
 	public String userListForm(Model model) {
