@@ -1,4 +1,5 @@
 let isuserNameSameCheck = false;
+let userNameCheckEvent = true;
 
 
 // 회원가입
@@ -15,6 +16,11 @@ $("#btnUsernameSameCheck").click(() => {
 function join(){
 	if(isuserNameSameCheck== false){
 		alert("아이디 중복 확인을 해주세요");
+		return;
+	}
+	
+	if(userNameCheckEvent != $("#userName").val()){
+		alert("아이디 중복 확인을 다시 해주세요");
 		return;
 	}
 	
@@ -52,6 +58,7 @@ function checkUserName() {
 			if (res.data == false) {
 				alert("사용 가능한 아이디입니다.");
 				isuserNameSameCheck = true;
+				userNameCheckEvent = $("#userName").val();
 			} else {
 				alert("아이디가 중복되었어요. 다른 아이디를 사용해주세요.");
 				isuserNameSameCheck = false;
