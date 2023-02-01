@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.RequiredArgsConstructor;
@@ -92,10 +93,10 @@ public class UserController {
 		return new CMRespDto<>(1, "성공", isSame);
 	}
 	
-	@PostMapping("join")
-	public String join(JoinDto joinDto) {
+	@PostMapping("/join")
+	public @ResponseBody CMRespDto<?> join(@RequestBody JoinDto joinDto) {
 		userDao.insert(joinDto.toEntity());
-		return "redirect:/loginForm";
+		return new CMRespDto<>(1, "회원가입성공", null);
 	}
 	
 	
