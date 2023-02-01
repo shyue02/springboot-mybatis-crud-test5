@@ -14,4 +14,5 @@ public interface UserDao {
     public int deleteById(Integer userId); 
     public User login(LoginDto loginDto);
     public User adminlogin(AdminLoginDto adminloginDto);
+    public User findByUserName(String userName);
 }

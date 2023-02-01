@@ -25,6 +25,12 @@
 		SELECT * FROM user
 		where user_name=#{userName} AND user_password=#{userPassword} AND role = 'admin'
 	</select>
+	
+	<!-- 아이디 중복체크 	 -->
+	<select id="findByUserName" resultType="site.metacoding.firstapp.domain.User">
+		SELECT * FROM user
+		where user_name = #{userName}
+	</select>
 
 	<insert id="insert" useGeneratedKeys="true"
 		keyProperty="userId">

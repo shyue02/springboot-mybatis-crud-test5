@@ -9,20 +9,24 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.RequiredArgsConstructor;
 import site.metacoding.firstapp.domain.User;
 import site.metacoding.firstapp.domain.UserDao;
+import site.metacoding.firstapp.service.UserService;
 import site.metacoding.firstapp.web.dto.request.AdminLoginDto;
 import site.metacoding.firstapp.web.dto.request.JoinDto;
 import site.metacoding.firstapp.web.dto.request.LoginDto;
 import site.metacoding.firstapp.web.dto.request.UserUpdateDto;
+import site.metacoding.firstapp.web.dto.response.CMRespDto;
 
 @RequiredArgsConstructor
 @Controller
 public class UserController {
 	private final HttpSession session;
 	private final UserDao userDao;
+	private final UserService userService;
 
 	// 구매자 로그인
 	@GetMapping("/loginForm")
@@ -82,6 +86,12 @@ public class UserController {
 		return "user/joinForm";
 	}
 	
+	@GetMapping("/api/joinForm/userNameSameCheck")
+	public @ResponseBody  CMRespDto<Boolean> userNameSameCheck(String userName) {
+		boolean isSame = userService.아이디중복확인(userName);
+		return new CMRespDto<>(1, "성공", isSame);
+	}
+	
 	@PostMapping("join")
 	public String join(JoinDto joinDto) {
 		userDao.insert(joinDto.toEntity());
@@ -111,6 +121,7 @@ public class UserController {
 //		System.out.println(userUpdateDto.getUserPassword() + " -> 수정된 userPassword를 가져옴");	
 		return "redirect:/user/profile"; 
 	}
+	
 	
 	// 회원 탈퇴 - 구매자 권한
 	@PostMapping("/user/profile/delete")
