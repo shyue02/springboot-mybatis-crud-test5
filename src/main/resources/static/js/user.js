@@ -13,6 +13,7 @@ $("#btnUsernameSameCheck").click(() => {
 });
 
 
+
 function join(){ //회원가입
 	if(isuserNameSameCheck== false){
 		alert("아이디 중복 확인을 해주세요");
@@ -28,7 +29,11 @@ function join(){ //회원가입
 		alert("아이디를 입력해주세요");
 		return;
 	}
-
+	
+	if(blankUserPassword() == true){
+		alert("비밀번호를 입력해주세요");
+		return;
+	}
 
 	let data ={
 		userName : $("#userName").val(),
@@ -78,6 +83,13 @@ function checkUserName() { //아이디 중복 체크
 function blankUserName() {	// 아이디 공백만 막아줌, 띄어쓰기는 못 막아준다.
 	let username = $("#userName").val();
 	if(!username){
+		return true;
+	}
+}
+
+function blankUserPassword() {	// 비밀번호 공백 막아줌
+	let userpw = $("#userPassword").val();
+	if(!userpw){
 		return true;
 	}
 }
