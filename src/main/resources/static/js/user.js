@@ -13,7 +13,7 @@ $("#btnUsernameSameCheck").click(() => {
 });
 
 
-function join(){
+function join(){ //회원가입
 	if(isuserNameSameCheck== false){
 		alert("아이디 중복 확인을 해주세요");
 		return;
@@ -24,6 +24,12 @@ function join(){
 		return;
 	}
 	
+	if(blankUserName() == true){
+		alert("아이디를 입력해주세요");
+		return;
+	}
+
+
 	let data ={
 		userName : $("#userName").val(),
 		userPassword : $("#userPassword").val(),
@@ -42,12 +48,13 @@ function join(){
 			location.replace("/loginForm");
 		}else {
 			alert("회원가입에 실패하였습니다.");
-			history.back();
+			//history.back(); -> 이전 페이지로 이동
+			location.replace("/joinForm");	// 회원가입 실패 시 다시 회원가입 페이지로
 		}
 	});
 }
 
-function checkUserName() {
+function checkUserName() { //아이디 중복 체크
 	let userName = $("#userName").val();
 
 	$.ajax("/api/joinForm/userNameSameCheck?userName=" + userName, {
@@ -66,4 +73,11 @@ function checkUserName() {
 			}
 		}
 	});
+}
+
+function blankUserName() {	// 아이디 공백만 막아줌, 띄어쓰기는 못 막아준다.
+	let username = $("#userName").val();
+	if(!username){
+		return true;
+	}
 }

@@ -95,6 +95,9 @@ public class UserController {
 	
 	@PostMapping("/join")
 	public @ResponseBody CMRespDto<?> join(@RequestBody JoinDto joinDto) {
+		if(joinDto.getUserName() == null || joinDto.getUserName().isBlank()) {
+			return new CMRespDto<>(-1, "회원가입 실패", null);
+		}
 		userDao.insert(joinDto.toEntity());
 		return new CMRespDto<>(1, "회원가입성공", null);
 	}
