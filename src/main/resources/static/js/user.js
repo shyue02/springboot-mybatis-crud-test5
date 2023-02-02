@@ -30,6 +30,11 @@ function join(){ //회원가입
 		return;
 	}
 	
+	if (capitalLetter() == false) {
+		alert("아이디는 영어로 입력해주세요")
+		return;
+	}
+	
 	if(blankUserPassword() == true){
 		alert("비밀번호를 입력해주세요");
 		return;
@@ -90,6 +95,16 @@ function blankUserName() {	// 아이디 공백 || 띄어쓰기 막아줌
 	let blank = /\s/g;
 	if(!username || blank.test(username)){
 		return true;
+	}
+}
+
+function capitalLetter() {	// 영어만 입력 가능
+	let username = $("#userName").val();
+	let capiRule = /[a-zA-Z]/;
+	if (capiRule.test(username)) {
+		return true;
+	} else {
+		return false;
 	}
 }
 

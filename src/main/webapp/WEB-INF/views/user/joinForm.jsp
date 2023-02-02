@@ -5,7 +5,7 @@
 <div class="container">
 	<form>
 		<div class="mb-3 mt-3">
-			<input id="userName" type="text" class="form-control" placeholder="아이디를 입력해주세요" maxlength="20">
+			<input id="userName" type="text" class="form-control" placeholder="아이디를 입력해주세요 (영어만 사용 가능)" maxlength="20">
 			<button id ="btnUsernameSameCheck" class="btn btn-warning" type="button">아이디 중복체크</button>
 		</div>
 		<div class="mb-3">
