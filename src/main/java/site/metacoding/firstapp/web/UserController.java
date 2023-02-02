@@ -101,6 +101,9 @@ public class UserController {
 		if(joinDto.getUserPassword() == null || joinDto.getUserPassword().isBlank()) {
 			return new CMRespDto<>(-1, "회원가입 실패", null);
 		}
+		if(joinDto.getUserEmail() == null || joinDto.getUserEmail().isBlank()) {
+			return new CMRespDto<>(-1, "회원가입 실패", null);
+		}
 		userDao.insert(joinDto.toEntity());
 		return new CMRespDto<>(1, "회원가입성공", null);
 	}

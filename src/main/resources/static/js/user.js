@@ -34,6 +34,11 @@ function join(){ //회원가입
 		alert("비밀번호를 입력해주세요");
 		return;
 	}
+	
+	if (emailCheck() == false) {
+		alert("이메일 형식을 지켜주세요")
+		return;
+	}
 
 	let data ={
 		userName : $("#userName").val(),
@@ -91,5 +96,15 @@ function blankUserPassword() {	// 비밀번호 공백 막아줌
 	let userpw = $("#userPassword").val();
 	if(!userpw){
 		return true;
+	}
+}
+
+function emailCheck() {	// email 형식
+	let email = $("#userEmail").val();
+	let emailRule = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+	if (emailRule.test(email)) {
+		return true;
+	} else {
+		return false;
 	}
 }
