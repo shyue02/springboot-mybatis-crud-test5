@@ -85,16 +85,18 @@ function checkUserName() { //아이디 중복 체크
 	});
 }
 
-function blankUserName() {	// 아이디 공백만 막아줌, 띄어쓰기는 못 막아준다.
+function blankUserName() {	// 아이디 공백 || 띄어쓰기 막아줌
 	let username = $("#userName").val();
-	if(!username){
+	let blank = /\s/g;
+	if(!username || blank.test(username)){
 		return true;
 	}
 }
 
-function blankUserPassword() {	// 비밀번호 공백 막아줌
+function blankUserPassword() {	// 비밀번호 공백 || 띄어쓰기 막아줌
 	let userpw = $("#userPassword").val();
-	if(!userpw){
+	let blank = /\s/g;
+	if(!userpw || blank.test(userpw)){
 		return true;
 	}
 }

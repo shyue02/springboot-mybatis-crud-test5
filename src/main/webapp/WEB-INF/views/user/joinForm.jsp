@@ -9,7 +9,7 @@
 			<button id ="btnUsernameSameCheck" class="btn btn-warning" type="button">아이디 중복체크</button>
 		</div>
 		<div class="mb-3">
-			<input id="userPassword" type="password" class="form-control" placeholder="비밀번호를 입력해주세요" maxlength="20">
+			<input id="userPassword" type="password" class="form-control" placeholder="비밀번호를 입력해주세요 (띄어쓰기 사용X)" maxlength="20">
 		</div>
 		<div class="mb-3">
 			<input id="userEmail" type="email" class="form-control" placeholder="이메일을 입력해주세요 (ID@emil.com)" maxlength="20">
