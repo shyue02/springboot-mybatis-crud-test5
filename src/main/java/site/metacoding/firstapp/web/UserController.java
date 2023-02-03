@@ -119,17 +119,10 @@ public class UserController {
 	}
 	
 	// 회원 정보 수정
-	@PostMapping("/user/profile")
-	public String userUpdate(UserUpdateDto userUpdateDto) {
-		// 1. principal에서 userId를 찾아옴
-		User principal = (User) session.getAttribute("principal");
-//		System.out.println(principal.getUserId() +  " userId를 가져옴");
-		
-		// 2, 영속화 된 객체 변경 -> DB 수행
-		userDao.update(userUpdateDto.toEntity(principal.getUserId()));
-//		System.out.println(userUpdateDto.getUserEmail() + " -> 수정 된 userEmail를 가져옴");
-//		System.out.println(userUpdateDto.getUserPassword() + " -> 수정된 userPassword를 가져옴");	
-		return "redirect:/user/profile"; 
+	@PostMapping("/api/user/profile")
+	public @ResponseBody CMRespDto<?> userUpdate(@RequestBody UserUpdateDto userUpdateDto) {
+		userService.회원정보수정(userUpdateDto);
+	    return new CMRespDto<>(1, "회원정보수정성공", null);
 	}
 	
 	

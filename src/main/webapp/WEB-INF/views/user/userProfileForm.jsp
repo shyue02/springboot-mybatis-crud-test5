@@ -3,8 +3,8 @@
 <%@ include file="../layout/header.jsp"%>
 
 <div class="container">
-	<form action="/user/profile" method="post">
-		<input name="id" type="hidden" value="${userProfile.userId}" />
+	<form>
+		<input id="userId" type="hidden" value="${userProfile.userId}" />
 		<div class="mb-3 mt-3">
 			<span>아이디</span>
 			<input type="text" class="form-control" placeholder="Enter username" value="${userProfile.userName}"
@@ -12,15 +12,15 @@
 		</div>
 		<div class="mb-3">
 			<span>비밀번호</span>
-			<input name="userPassword" type="password" class="form-control" placeholder="Enter password"
+			<input id="userPassword" type="password" class="form-control" placeholder="Enter password"
 				value="${userProfile.userPassword}">
 		</div>
 		<div class="mb-3">
 			<span>이메일</span>
-			<input name="userEmail" type="email" class="form-control" placeholder="Enter email"
+			<input id="userEmail" type="email" class="form-control" placeholder="Enter email"
 				value="${userProfile.userEmail}">
 		</div>
-		<button name="btnUpdate" type="submit" class="btn btn-primary">회원수정완료</button>
+		<button id="btnUpdate" type="button" class="btn btn-primary">회원수정완료</button>
 	</form>
 	<c:if test="${principal.role == 'user' }">
 	<br>
@@ -30,5 +30,6 @@
 	</c:if>
 </div>
 
+<script src ="/js/userProfile.js"></script>
 
 <%@ include file="../layout/footer.jsp"%>
