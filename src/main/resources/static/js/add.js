@@ -46,7 +46,7 @@ function insertProduct() {
 		productQty: $("#qty").val()
 	};
 
-	$.ajax("/product/add", {
+	$.ajax("/api/product/add", {
 		type: "POST",
 		dataType: "json",
 		data: JSON.stringify(data),	//http body에 들고 갈 요청 데이터

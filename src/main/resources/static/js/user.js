@@ -51,7 +51,7 @@ function join(){ //회원가입
 		userEmail : $("#userEmail").val()
 	};
 	
-	$.ajax("/join", {
+	$.ajax("/api/join", {
 		type : "POST",
 		dataType : "json",
 		data : JSON.stringify(data),

@@ -63,7 +63,7 @@ public class ProductController {
 	}
 	
 	// 상품등록하기 - insert
-	@PostMapping("/product/add")
+	@PostMapping("/api/product/add")
 	public @ResponseBody CMRespDto<?> productInsert(@RequestBody Product product) {
 		productDao.insert(product);
 		return new CMRespDto<>(1, "상품등록성공", null);

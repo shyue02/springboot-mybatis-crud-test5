@@ -94,7 +94,7 @@ public class UserController {
 		return new CMRespDto<>(1, "성공", isSame);
 	}
 	
-	@PostMapping("/join")
+	@PostMapping("/api/join")
 	public @ResponseBody CMRespDto<?> join(@RequestBody JoinDto joinDto) {
 		if(joinDto.getUserName() == null || joinDto.getUserName().isBlank()) {
 			return new CMRespDto<>(-1, "회원가입 실패", null);
