@@ -55,9 +55,11 @@ function insertProduct() {
 		}
 	}).done((res) => {
 		if (res.code == 1) {
-			location.href = "/product";
+			alert("상품등록이 완료되었습니다.")
+			//location.href = "/product"; -> 중복체크 기능이 없을 시, 상품등록 후 뒤로가기를 하면 중복 등록이 가능
+			location.replace("/");
 		} else {
-			alert("상품명을 확인해주세요");
+			alert("상품등록에 실패하였습니다.");
 			history.back();
 		}
 	});

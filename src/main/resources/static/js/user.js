@@ -60,6 +60,7 @@ function join(){ //회원가입
 		}
 	}).done((res)=> {
 		if(res.code == 1){
+			alert("회원가입에 성공하였습니다.")
 			location.replace("/loginForm");
 		}else {
 			alert("회원가입에 실패하였습니다.");
