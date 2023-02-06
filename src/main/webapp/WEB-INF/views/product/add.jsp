@@ -25,9 +25,8 @@
 			</tbody>
 		</table>
 		<div align="center">
-					<button id="btnProductSameCheck" type="button"
-				class="btn btn-warning">상품명 중복 확인</button>
-				<button id="btnInsert" type="button" class="btn btn-primary">상품등록</button>
+			<button id="btnProductSameCheck" type="button" class="btn btn-warning">상품명 중복 확인</button>
+			<button id="btnInsert" type="button" class="btn btn-primary">상품등록</button>
 		</div>
 	</form>
 </div>

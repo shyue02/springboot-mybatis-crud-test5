@@ -24,6 +24,11 @@ function insertProduct() {
 		alert("상품명 중복 확인을 다시 해주세요!");
 		return;
 	}
+	
+	if(blankProductName() == true){
+		alert("상품명을 입력해주세요");
+		return
+	}
 
 	let data = {
 		productName: $("#name").val(),
@@ -51,6 +56,11 @@ function insertProduct() {
 
 // 상품명 중복 확인
 function checkProductName() {
+	if(blankProductName() == true){
+		alert("상품명을 입력해주세요");
+		return
+	}
+
 	let productName = $("#name").val();
 
 
@@ -71,4 +81,12 @@ function checkProductName() {
 			}
 		}
 	});
+}
+
+function blankProductName() {	// 상품명 공백 || 띄어쓰기 막아줌
+	let productName = $("#name").val();
+	let blank = /\s/g;
+	if(!productName || blank.test(productName)){
+		return true;
+	}
 }
