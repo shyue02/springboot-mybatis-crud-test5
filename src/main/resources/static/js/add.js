@@ -29,7 +29,17 @@ function insertProduct() {
 		alert("상품명을 입력해주세요");
 		return
 	}
+	
+	if(numProductPrice() == false){
+		alert("상품가격에 숫자만 입력해주세요");
+		return;
+	}
 
+	if(numProductQty() == false){
+		alert("상품수량에 숫자만 입력해주세요");
+		return;
+	}
+	
 	let data = {
 		productName: $("#name").val(),
 		productPrice: $("#price").val(),
@@ -88,5 +98,25 @@ function blankProductName() {	// 상품명 공백 || 띄어쓰기 막아줌
 	let blank = /\s/g;
 	if(!productName || blank.test(productName)){
 		return true;
+	}
+}
+
+function numProductPrice() {	// 상품가격에 숫자만 입력 가능
+	let productPrice = $("#price").val();
+	let numRule = /^[0-9]+$/;
+	if (numRule.test(productPrice)) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function numProductQty() {	// 상품수량에 숫자만 입력 가능
+	let productQty = $("#qty").val();
+	let numRule = /^[0-9]+$/;
+	if (numRule.test(productQty)) {
+		return true;
+	} else {
+		return false;
 	}
 }
