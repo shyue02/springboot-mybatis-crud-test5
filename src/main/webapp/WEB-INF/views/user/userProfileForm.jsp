@@ -20,14 +20,13 @@
 			<input id="userEmail" type="email" class="form-control" placeholder="Enter email"
 				value="${userProfile.userEmail}">
 		</div>
-		<button id="btnUpdate" type="button" class="btn btn-primary">회원수정완료</button>
+		<div>
+			<button id="btnUpdate" type="button" class="btn btn-primary">회원수정완료</button>
+			<c:if test="${principal.role == 'user' }">
+				<button id="btnDelete" type="button" class="btn btn-danger">회원탈퇴</button>
+			</c:if>
+		</div>
 	</form>
-	<c:if test="${principal.role == 'user' }">
-	<br>
-		<form action="/user/profile/delete" method="post">
-			<button name="btnDelete" type="submit" class="btn btn-danger">회원탈퇴</button>
-		</form>
-	</c:if>
 </div>
 
 <script src ="/js/userProfile.js"></script>

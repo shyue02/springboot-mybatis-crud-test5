@@ -2,6 +2,10 @@ $("#btnUpdate").click(()=>{
 	userUpdate();
 });
 
+$("#btnDelete").click(()=>{
+	userDelete();
+});
+
 
 function userUpdate(){
 	let data ={
@@ -24,4 +28,18 @@ function userUpdate(){
 			alert("회원정보 수정 실패");
 		}
 	});
+}
+
+function userDelete(){
+	$.ajax("/api/user/profile/delete/" , {
+		type : "DELETE",
+		dataType : "json",
+	}).done((res)=> {
+		if(res.code == 1){
+			alert("회원 탈퇴 완료")
+			location.href="/"; //새로고침
+		}else {
+			alert("회원 탈퇴 실패");
+		}
+	});	
 }

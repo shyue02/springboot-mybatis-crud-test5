@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -127,13 +128,13 @@ public class UserController {
 	
 	
 	// 회원 탈퇴 - 구매자 권한
-	@PostMapping("/user/profile/delete")
-	public String unregister(Integer userId) {
+	@DeleteMapping("/api/user/profile/delete")
+	public @ResponseBody CMRespDto<?> userWithdrawal (Integer userId){
 		User principal = (User) session.getAttribute("principal");
 		userDao.deleteById(principal.getUserId());
-		session.invalidate();		// -> 회원 탈퇴 버튼 클릭 시 세션 로그아웃 되도록
-		return "redirect:/";
-	}	
+		session.invalidate();
+		return new CMRespDto<>(1, "회원탈퇴성공", null);
+	}
 
 
 	// 유저 목록 페이지 - 관리자만 접근 가능
