@@ -32,9 +32,11 @@
 				</tr>
 			</tbody>
 		</table>
-		<c:if test="${principal.role == 'user'}">
-			<button type="submit" class="btn btn-primary">구매하기</button>
-		</c:if>
+		<div align="center">
+			<c:if test="${principal.role == 'user'}">
+				<button type="submit" class="btn btn-primary">구매하기</button>
+			</c:if>
+		</div>
 	</form>
 	<div class="d-flex">
 		<c:if test="${principal.role == 'admin' }">

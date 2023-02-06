@@ -30,7 +30,7 @@ function join(){ //회원가입
 		return;
 	}
 	
-	if (capitalLetter() == false) {
+	if (useAlphabet() == false) {
 		alert("아이디는 영어로 입력해주세요")
 		return;
 	}
@@ -40,7 +40,7 @@ function join(){ //회원가입
 		return;
 	}
 	
-	if (emailCheck() == false) {
+	if (checkUserEmail() == false) {
 		alert("이메일 형식을 지켜주세요")
 		return;
 	}
@@ -104,7 +104,7 @@ function blankUserName() {	// 아이디 공백 || 띄어쓰기 막아줌
 	}
 }
 
-function capitalLetter() {	// 영어만 입력 가능
+function useAlphabet() {	// 영어만 입력 가능
 	let username = $("#userName").val();
 	let capiRule = /[a-zA-Z]/;
 	if (capiRule.test(username)) {
@@ -122,7 +122,7 @@ function blankUserPassword() {	// 비밀번호 공백 || 띄어쓰기 막아줌
 	}
 }
 
-function emailCheck() {	// email 형식
+function checkUserEmail() {	// email 형식
 	let email = $("#userEmail").val();
 	let emailRule = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
 	if (emailRule.test(email)) {

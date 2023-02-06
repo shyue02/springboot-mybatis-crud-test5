@@ -21,7 +21,7 @@
 				value="${userProfile.userEmail}">
 		</div>
 		<div>
-			<button id="btnUpdate" type="button" class="btn btn-primary">회원수정완료</button>
+			<button id="btnUpdate" type="button" class="btn btn-primary">회원수정</button>
 			<c:if test="${principal.role == 'user' }">
 				<button id="btnDelete" type="button" class="btn btn-danger">회원탈퇴</button>
 			</c:if>
