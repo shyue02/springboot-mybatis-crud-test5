@@ -130,9 +130,7 @@ public class UserController {
 	// 회원 탈퇴 - 구매자 권한
 	@DeleteMapping("/api/user/profile/delete")
 	public @ResponseBody CMRespDto<?> userWithdrawal (Integer userId){
-		User principal = (User) session.getAttribute("principal");
-		userDao.deleteById(principal.getUserId());
-		session.invalidate();
+		userService.회원탈퇴(userId);
 		return new CMRespDto<>(1, "회원탈퇴성공", null);
 	}
 

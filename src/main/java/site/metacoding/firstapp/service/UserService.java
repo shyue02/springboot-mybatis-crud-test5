@@ -29,4 +29,10 @@ public class UserService {
 		User principal = (User) session.getAttribute("principal");
 		userDao.update(userUpdateDto.toEntity(principal.getUserId()));
 	}
+	
+	public void 회원탈퇴(Integer userId) {
+		User principal = (User) session.getAttribute("principal");
+		userDao.deleteById(principal.getUserId());
+		session.invalidate();
+	}
 }
