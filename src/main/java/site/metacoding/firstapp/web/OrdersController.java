@@ -35,7 +35,7 @@ public class OrdersController {
 //		model.addAttribute("ordersproduct", getOrderList);
 		model.addAttribute("ordersproduct", ordersDao.findAll(principal.getUserId()));
 		
-		return "orders/ordersList";
+		return "orders/ordersListForm";
 	}
 	
 	// 상품 구매하기
@@ -68,22 +68,22 @@ public class OrdersController {
 			return "redirect:/loginForm";
 		}
 		
-		System.out.println("=======================");
-		System.out.println(ordersDto.getOrdersName());
-		System.out.println(ordersDto.getOrdersPrice());
-		System.out.println(ordersDto.getOrdersQty());
+//		System.out.println("=======================");
+//		System.out.println(ordersDto.getOrdersName());
+//		System.out.println(ordersDto.getOrdersPrice());
+//		System.out.println(ordersDto.getOrdersQty());
 //		System.out.println(ordersDto.getOrdersId());
-		System.out.println(ordersDto.getProductId());
-		System.out.println("=======================");
+//		System.out.println(ordersDto.getProductId());
+//		System.out.println("=======================");
 		
 		Orders ordersPS = ordersDao.findById(ordersId);	// ordersId 찾아서
-		System.out.println(ordersId);
+//		System.out.println(ordersId);
 		
 		productDao.cancelPurchase(ordersDto);
-		System.out.println("구매취소 성공");
+//		System.out.println("구매취소 성공");
 		
 		ordersDao.deleteById(ordersPS.getOrdersId());	
-		System.out.println("주문아이디 삭제");
+//		System.out.println("주문아이디 삭제");
 
 		return "redirect:/";
 	}
@@ -97,7 +97,7 @@ public class OrdersController {
 		
 		User principal = (User) session.getAttribute("principal");
 		if(principal.getRole().equals("admin")){
-			return "/orders/userOrderList";
+			return "/orders/userOrderListForm";
 		}
 		return "redirect:/";
 	}

@@ -31,7 +31,7 @@ public class ProductController {
 	public String productList(Model model) {
 		List<Product> getList = productDao.findAll();
 		model.addAttribute("product", getList);
-		return "product/list";
+		return "product/listForm";
 	}
 
 	
@@ -41,7 +41,7 @@ public class ProductController {
 //		Product productPS = productDao.findById(productId);
 //		model.addAttribute("detail", productPS);
 		model.addAttribute("detail", productDao.findById(productId));
-		return "product/detail";
+		return "product/detailForm";
 	}
 	
 	
@@ -57,7 +57,7 @@ public class ProductController {
 	public String insertForm() {
 		User principal = (User) session.getAttribute("principal");
 		if(principal.getRole().equals("admin")){
-			return "product/add";
+			return "product/addForm";
 		}
 		return "redirect:/";
 	}
@@ -77,7 +77,7 @@ public class ProductController {
 			
 		User principal = (User) session.getAttribute("principal");
 		if(principal.getRole().equals("admin")){
-			return "product/edit";
+			return "product/editForm";
 		}
 		return "redirect:/product/{productId}";
 	}

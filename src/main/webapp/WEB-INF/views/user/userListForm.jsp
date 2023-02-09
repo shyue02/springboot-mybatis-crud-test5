@@ -24,7 +24,7 @@
 					<td>${userlist.role}</td>
 					<td>${userlist.createdAt}</td>
 					<td>
-						<form action="userListForm/${userlist.userId}/delete" method="post">
+						<form action="/userListForm/${userlist.userId}/delete" method="post">
 							<button type="submit"  class="btn btn-danger">회원 삭제</button>
 						</form>
 					</td>

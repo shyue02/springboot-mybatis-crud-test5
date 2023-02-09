@@ -136,7 +136,7 @@ public class UserController {
 
 
 	// 유저 목록 페이지 - 관리자만 접근 가능
-	@GetMapping("userListForm")
+	@GetMapping("/userListForm")
 	public String userListForm(Model model) {
 		List<User> getuserList = userDao.findAll();
 		model.addAttribute("userlist", getuserList);
@@ -149,7 +149,7 @@ public class UserController {
 	}
 	
 	// 유저 삭제 - 관리자 권한
-		@PostMapping("userListForm/{userId}/delete")
+		@PostMapping("/userListForm/{userId}/delete")
 		public String userDelete(@PathVariable Integer userId) {
 			userDao.deleteById(userId);
 			return "redirect:/userListForm";
